@@ -1,10 +1,10 @@
 package mainapp;
 
+import javax.swing.JOptionPane;
 import models.Arbol;
 import models.Nodo;
 
 public class Mainapp {
-
 	/**
 	 * Dado el código base de los árboles con sus respectivos recorridos (pre, in y
 	 * post). Se pide:
@@ -51,31 +51,71 @@ public class Mainapp {
 
 	public static void main(String[] args) {
 
-		// Creamos la raiz
-		Nodo raiz = new Nodo(1, null);
+		int opcion = 0;
+		Arbol arbolito = new Arbol();
 
-		// Creamos nodos y sus papas
-		Nodo nodo2 = new Nodo(2, raiz);
-		Nodo nodo7 = new Nodo(7, raiz);
-		Nodo nodo3 = new Nodo(3, nodo2);
-		Nodo nodo4 = new Nodo(4, nodo2);
-		Nodo nodo5 = new Nodo(5, nodo4);
-		Nodo nodo6 = new Nodo(6, nodo4);
-		Nodo nodo8 = new Nodo(8, nodo7);
-		Nodo nodo9 = new Nodo(9, nodo7);
+		// menu de opciones
+		do {
 
-		// Establecemos los hijos de cada nodo
-		raiz.setNodoIzq(nodo2);
-		raiz.setNodoDer(nodo7);
-		nodo2.setNodoIzq(nodo3);
-		nodo2.setNodoDer(nodo4);
-		nodo7.setNodoIzq(nodo8);
-		nodo7.setNodoDer(nodo9);
-		nodo4.setNodoIzq(nodo5);
-		nodo4.setNodoDer(nodo6);
+			try {
+				opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
+								  "1 - Agregar Nodo\n" 
+								+ "2 - Recorrer el Arbol en inOrden\n" 
+								+ "3 - Recorrer el Arbol en preOrden\n"
+								+ "4 - Recorrer el Arbol en postOrden\n" 
+								+ "5 - Buscar nodo en el Arbol\n"
+								+ "6 - Salir\n" + "Elige una opcion",
+						"Arboles", JOptionPane.QUESTION_MESSAGE));
 
-		Arbol arbolito = new Arbol(raiz);
+				switch (opcion) {
+				case 1:
+							// Work in progress
+					break;
 
-		arbolito.preOrden();
+				case 2:
+					if (!arbolito.estaVacio()) {
+						arbolito.inOrden(arbolito.raiz);
+					} else {
+						JOptionPane.showMessageDialog(null, "El arbol esta vacio", "Cuidado",
+								JOptionPane.INFORMATION_MESSAGE);
+					}
+					break;
+
+				case 3:
+					if (!arbolito.estaVacio()) {
+						arbolito.preOrden(arbolito.raiz);
+					} else {
+						JOptionPane.showMessageDialog(null, "El arbol esta vacio", "Cuidado",
+								JOptionPane.INFORMATION_MESSAGE);
+					}
+					break;
+
+				case 4:
+					if (!arbolito.estaVacio()) {
+						arbolito.postOrden(arbolito.raiz);
+					} else {
+						JOptionPane.showMessageDialog(null, "El arbol esta vacio", "Cuidado",
+								JOptionPane.INFORMATION_MESSAGE);
+					}
+					break;
+
+				case 5:
+							// WIP
+					break;
+
+				case 6:
+					JOptionPane.showMessageDialog(null, "Aplicacion finalizada", "Fin",
+							JOptionPane.INFORMATION_MESSAGE);
+					break;
+
+				default:
+					JOptionPane.showMessageDialog(null, "Opcion incorrecta", "Cuidado",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
+
+			} catch (NumberFormatException n) {
+				JOptionPane.showMessageDialog(null, "Error" + n.getMessage());
+			}
+		} while (opcion != 6);
 	}
 }

@@ -1,22 +1,52 @@
 package models;
 
 public class Arbol {
-	private Nodo raiz;
+	public Nodo raiz;
 
-	public Arbol(Nodo raiz) {
-		super();
-		this.raiz = raiz;
+	public Arbol() {
+		raiz = null;
 	}
 
-	public Nodo getRaiz() {
-		return raiz;
+	/**
+	 * Metodo para saber cuando arbol esta vacio
+	 */
+	public boolean estaVacio() {
+		return raiz == null;
+	}
+	
+	/**
+	 * Método para recorrer recursivamente el árbol preOrden
+	 * @param r
+	 */
+	public void preOrden(Nodo r) {
+		if (r != null) {
+			System.out.println(r.dato);
+			preOrden(r.nodoIzq);
+			preOrden(r.nodoDer);
+		}
 	}
 
-	public void setRaiz(Nodo raiz) {
-		this.raiz = raiz;
+	/**
+	 * Método para recorrer recursivamente el árbol inOrden
+	 * @param r
+	 */
+	public void inOrden(Nodo r) {
+		if (r != null) {
+			inOrden(r.nodoIzq);
+			System.out.println(r.dato);
+			inOrden(r.nodoDer);
+		}
 	}
-
-	public void preOrden() {
-		this.raiz.preOrden();
+	
+	/**
+	 * Método para recorrer recursivamente el árbol postOrden
+	 * @param r
+	 */
+	public void postOrden(Nodo r) {
+		if (r != null) {
+			postOrden(r.nodoIzq);
+			postOrden(r.nodoDer);
+			System.out.println(r.dato);
+		}
 	}
 }

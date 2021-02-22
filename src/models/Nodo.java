@@ -1,31 +1,33 @@
 package models;
 
 public class Nodo {
-	private int valor;
-	private Nodo papa;
-	private Nodo nodoIzq;
-	private Nodo nodoDer;
-
-	public Nodo(int valor, Nodo papa) {
-		super();
-		this.valor = valor;
-		this.papa = papa;
+	int dato;
+	String nombre; // nombre del nodo
+	Nodo nodoIzq;
+	Nodo nodoDer;
+	
+	// constructor
+	public Nodo(int d, String nom) {
+		this.dato=d;
+		this.nombre=nom;
+		this.nodoDer=null;
+		this.nodoIzq=null;
+	}
+	
+	public int getDato() {
+		return dato;
 	}
 
-	public int getValor() {
-		return valor;
+	public void setDato(int dato) {
+		this.dato = dato;
 	}
 
-	public void setValor(int valor) {
-		this.valor = valor;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public Nodo getPapa() {
-		return papa;
-	}
-
-	public void setPapa(Nodo papa) {
-		this.papa = papa;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public Nodo getNodoIzq() {
@@ -44,20 +46,7 @@ public class Nodo {
 		this.nodoDer = nodoDer;
 	}
 
-	public boolean esHoja() {
-		return this.nodoIzq == null && this.nodoDer == null;
-	}
-
-	public void preOrden() {
-		System.out.println(this.valor);
-
-		if (!this.esHoja()) {
-			if(nodoIzq != null)
-				this.nodoIzq.preOrden();
-			if(nodoDer != null)
-				this.nodoDer.preOrden();
-		} else {			
-			return;
-		}
+	public String toString() {
+		return nombre + " Su dato es " + dato;		
 	}
 }
