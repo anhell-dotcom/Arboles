@@ -52,6 +52,8 @@ public class Mainapp {
 	public static void main(String[] args) {
 
 		int opcion = 0;
+		int elemento = 0;
+		String nombre;
 		Arbol arbolito = new Arbol();
 
 		// menu de opciones
@@ -69,7 +71,11 @@ public class Mainapp {
 
 				switch (opcion) {
 				case 1:
-							// Work in progress
+					elemento = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa el numero del nodo",
+							"Agregando Nodo", JOptionPane.QUESTION_MESSAGE));
+					nombre = JOptionPane.showInputDialog(null, "Ingresa el nombre del nodo", "Agregando Nodo",
+							JOptionPane.QUESTION_MESSAGE);
+					arbolito.insertarNodo(elemento, nombre);
 					break;
 
 				case 2:
