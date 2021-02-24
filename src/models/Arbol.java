@@ -81,4 +81,24 @@ public class Arbol {
 			}
 		}
 	}
+	
+	/**
+	 * Método para buscar un nodo en el arbol
+	 * @param d
+	 * @return
+	 */
+	public Nodo buscarNodo(int d) {
+		Nodo aux = raiz;
+		while (aux.dato != d) {
+			if (d < aux.dato) {
+				aux = aux.nodoIzq;
+			} else {
+				aux = aux.nodoDer;
+			}
+			if (aux == null) {
+				return null; // no encontró nada...
+			}
+		}
+		return aux;
+	}
 }

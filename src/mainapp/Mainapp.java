@@ -106,7 +106,20 @@ public class Mainapp {
 					break;
 
 				case 5:
-							// WIP
+					if (!arbolito.estaVacio()) {
+						elemento = Integer.parseInt(JOptionPane.showInputDialog(null,
+								"Ingresa el numero del nodo a buscar", "Buscando Nodo", JOptionPane.QUESTION_MESSAGE));
+						arbolito.buscarNodo(elemento);
+						if (arbolito.buscarNodo(elemento) == null) {
+							JOptionPane.showMessageDialog(null, "Nodo no encontrado en el arbol", "Lo siento",
+									JOptionPane.INFORMATION_MESSAGE);
+						} else {
+							System.out.println("Nodo encontrado. Su dato es: " + arbolito.buscarNodo(elemento));
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "El arbol esta vacio", "Cuidado",
+								JOptionPane.INFORMATION_MESSAGE);
+					}
 					break;
 
 				case 6:
